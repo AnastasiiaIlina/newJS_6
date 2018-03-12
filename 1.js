@@ -11,8 +11,6 @@ let keyTrainer = {
 		document.querySelector('.enterNumber').innerHTML = enterNumber + ' символа (-ов).';
 		this.charCount=enterNumber;
 
-			
-
 		const checkPositiveInteger =()=> {
 
 			while(!(Number.isInteger(enterNumber) && enterNumber>0)) {
@@ -21,15 +19,11 @@ let keyTrainer = {
 		}
 
 		checkPositiveInteger();
-
 		return enterNumber;
 
 	},
 
-
 }; /*end keyTrainer*/
-
-
 
 
 // task 4
@@ -40,19 +34,15 @@ keyTrainer.createTask =function() {
 	for ( i=0; i<keyTrainer.task.lenght; i++) {
 		 keyTrainer.task[i] = this.chars[Math.floor(Math.random()*keyTrainer.task.lenght)];
 		 document.querySelector('.out').innerHTML = keyTrainer.task + ',' ;
-		
 	}
-
-		console.log(keyTrainer.task);
+// console.log(keyTrainer.task);
 }
 
 
-// task 5
+// task 5-7
 keyTrainer.userInput = '';
 keyTrainer.startTask = function() {
 		let result = prompt(`Наберите указанные символы: ${keyTrainer.task}`);
-
-
 		keyTrainer.userInput = result;
 
 		if(keyTrainer.userInput === keyTrainer.task.join('')) {
@@ -60,32 +50,17 @@ keyTrainer.startTask = function() {
 		}
 
 		else {
-			keyTrainer
-
-			console.log('fyyyy');
-
+			let counter = '';
+			for (var i = 0; i < keyTrainer.task.lenght; i++) {
+  				if (!(keyTrainer.userInput[i]===keyTrainer.task.join('')[i])) {
+  					counter++;
+  				}
+			}
+			keyTrainer.userErrors = console.log(`Вы допустили ${counter} ошибку (-ок/-ки). Повезет в следующий раз!`);
 		}
-
-
-		// return result;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function run(){
-	// keyTrainer.setCharCount();
-
-// keyTrainer.checkPositiveInteger();
 		keyTrainer.createTask(); 
 		keyTrainer.startTask();
 }
